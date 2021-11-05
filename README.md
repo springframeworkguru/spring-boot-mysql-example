@@ -18,7 +18,7 @@ MYSQL_DB_PORT=
 MYSQL_DB_USERNAME=
 MYSQL_DB_PASSWORD=
 ```
-&nbsp; Note: all names and passwords must be updated in the `src/main/resources/application.properties` file </br>
+&nbsp; Note: all names and passwords will be updated in the `src/main/resources/application.properties` file </br>
 4 - Build the jar file and run</br>
 &nbsp; a - Run the command `mvn clean install`. This will create a directory named `target`.</br>
 &nbsp; b - navigate to the `target` directory and run the jar file with `java -jar <file_name.jar>`</br>
