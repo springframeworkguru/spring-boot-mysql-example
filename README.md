@@ -17,6 +17,7 @@ MYSQL_DB_HOST=
 MYSQL_DB_PORT=
 MYSQL_DB_USERNAME=
 MYSQL_DB_PASSWORD=
+MYSQL_DB_DNNAME=
 ```
 &nbsp; Note: all names and passwords will be updated in the `src/main/resources/application.properties` file </br>
 ### 4 - Build the jar file and run</br>
