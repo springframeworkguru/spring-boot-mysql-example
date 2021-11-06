@@ -24,15 +24,15 @@ services:
     restart: on-failure
     links: 
       - "db:db"
+    environment:
+      MYSQL_DB_HOST: ${MYSQL_DB_HOST}
+      MYSQL_DB_PORT: ${MYSQL_DB_PORT}
+      MYSQL_DB_USERNAME: ${MYSQL_DB_USERNAME}
+      MYSQL_DB_PASSWORD: ${MYSQL_DB_PASSWORD}
+      MYSQL_DB_DNAME: ${MYSQL_DB_DNAME}
     build: 
       context:  .
       dockerfile: Dockerfile
-      args:
-        MYSQL_DB_HOST: ${MYSQL_DB_HOST}
-        MYSQL_DB_PORT: ${MYSQL_DB_PORT}
-        MYSQL_DB_USERNAME: ${MYSQL_DB_USERNAME}
-        MYSQL_DB_PASSWORD: ${MYSQL_DB_PASSWORD}
-        MYSQL_DB_DNAME: ${MYSQL_DB_DNAME}
     ports:
       - "8080:8080"
 ## Names our volume
