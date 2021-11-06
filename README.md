@@ -39,5 +39,5 @@ MYSQL_DB_PASSWORD=
 MYSQL_DB_DNNAME=
 ```
 ### 3 - Build and Run
-&nbsp; Run the command `docker-compose up` in the directory where docker files are. Docker will first pull the needed images for you and start working. </br>
+&nbsp; Run the command `docker-compose up` in the directory where docker files are. Docker will first pull the needed images and start working. </br>
 &nbsp; If you want to edit the configurations and build again, run `docker-compose up --build` to ignore chache and start building again. </br>
