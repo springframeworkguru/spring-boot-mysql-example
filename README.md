@@ -32,8 +32,8 @@ MYSQL_DB_DNNAME=
 ### 2 - Put the information in a new `.env` file
 &nbsp; For the sake of consistency, we use the same name while building locally </br>
 ```
-MYSQL_DB_HOST=
-MYSQL_DB_PORT=
+MYSQL_DB_HOST=db  #this one is necessary as it is the service name in docker-compose.yaml file
+MYSQL_DB_PORT=3306 #this is the default port used by mysql official image so don't choose any port else
 MYSQL_DB_USERNAME=
 MYSQL_DB_PASSWORD=
 MYSQL_DB_DNNAME=
