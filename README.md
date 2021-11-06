@@ -17,7 +17,7 @@ MYSQL_DB_HOST=
 MYSQL_DB_PORT=
 MYSQL_DB_USERNAME=
 MYSQL_DB_PASSWORD=
-MYSQL_DB_DNNAME=
+MYSQL_DB_DNAME=
 ```
 &nbsp; Note: all names and passwords will be updated in the `src/main/resources/application.properties` file </br>
 ### 4 - Build the jar file and run</br>
@@ -36,7 +36,7 @@ MYSQL_DB_HOST=db  #this one is necessary as it is the service name in docker-com
 MYSQL_DB_PORT=3306 #this is the default port used by mysql official image so don't choose any port else
 MYSQL_DB_USERNAME=
 MYSQL_DB_PASSWORD=
-MYSQL_DB_DNNAME=
+MYSQL_DB_DNAME=
 ```
 ### 3 - Build and Run
 &nbsp; Run the command `docker-compose up` in the directory where docker files are. Docker will first pull the needed images and start working. </br>
