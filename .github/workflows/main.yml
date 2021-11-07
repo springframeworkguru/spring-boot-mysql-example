@@ -28,7 +28,7 @@ jobs:
         cache: maven
         
     - name: Docker run mysql
-      run:  docker run -p 3306:3306 --env MYSQL_ROOT_PASSWORD=${{secrets.DatabasePassword}} --env MYSQL_DATABASE='springboot_mysql_example' --env MYSQL_USER='osama'  --env MYSQL_PASSWORD=${{secrets.DatabasePassword}} mysql
+      run:  docker run -p 3306:3306 --env MYSQL_ROOT_PASSWORD=${{secrets.DatabasePassword}} --env MYSQL_DATABASE='springboot_mysql_example' --env MYSQL_USER='osama'  --env MYSQL_PASSWORD=${{secrets.DatabasePassword}} -d mysql
 
 
 
