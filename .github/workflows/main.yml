@@ -29,13 +29,15 @@ jobs:
         
         
     - name: Setup MySQL
-      uses: mirromutth/mysql-action@v1.1
+      uses: haltuf/mysql-action@master
       with:
         mysql database: 'springboot_mysql_example'
         mysql root password: ${{ secrets.RootPassword }}
         mysql user: 'osama'
         mysql password: ${{ secrets.DatabasePassword }}
     
+#    - name: Configure Password permission
+#      run:  ALTER USER 'osama'@'localhost' IDENTIFIED WITH mysql_native_password BY ${{ secrets.DatabasePassword }} ;
     
     - name: Build the JAR file
       run: mvn clean install -DskipTests
