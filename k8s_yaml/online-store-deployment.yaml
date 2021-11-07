@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: online-store
+  labels: 
+    app: online-store
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: online-store
+  template:
+    metadata:
+      labels:
+        app: online-store
+    spec:
+      containers:
+      - name: online-store
+        image: osamamagdy/online_store
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MYSQL_DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: online-store-configmap
+              key:  MYSQL_DB_HOST
+        - name: MYSQL_DB_PORT
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key:  MYSQL_DB_PORT
+        - name: MYSQL_DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key:  MYSQL_DB_USERNAME
+        - name: MYSQL_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key:  MYSQL_DB_PASSWORD
+        - name: MYSQL_DB_DNAME
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key:  MYSQL_DB_DNAME

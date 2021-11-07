@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: online-store-configmap
+data:
+    MYSQL_DB_HOST: mysql-service

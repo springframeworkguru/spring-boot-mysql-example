@@ -19,3 +19,4 @@ target
 
 # env file
 .env
+k8s_yaml/secret.yaml
