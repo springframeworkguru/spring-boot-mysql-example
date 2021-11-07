@@ -41,3 +41,38 @@ MYSQL_DB_DNAME=
 ### 3 - Build and Run
 &nbsp; Run the command `docker-compose up` in the directory where docker files are. Docker will first pull the needed images and start working. </br>
 &nbsp; If you want to edit the configurations and build again, run `docker-compose up --build` to ignore chache and start building again. </br>
+
+## Deploy with kubernetes  
+### 1 - Install minikube </br>
+&nbsp; a - For testing purposes, we can deploy all our kubernetes deployments on a locally created single-node cluster with minikube [here](https://minikube.sigs.k8s.io/docs/start/) </br>
+&nbsp; Note: If you are running your ubuntu on a virtual machine upon other OS, you may need to follow this [guide](https://webme.ie/how-to-run-minikube-on-a-virtualbox-vm/) instead. </br>
+
+### 2 - Put the information in a new `secret.yaml` file
+&nbsp; a - Here, we will replace the `.env` file with two files. A configmap.yaml which contains non-sensetive data to be accessible by all cluster resources (this one is created for you and is present in the repository. </br>
+&nbsp; b - A secret.yaml which contains sensetive data that not to be shared on publuic repository so create the file first and fill the data below </br>
+
+```
+apiVersion: v1
+kind: Secret
+metadata:
+    name: mysql-secret
+type: Opaque
+data:
+    MYSQL_DB_PORT: 
+    MYSQL_DB_USERNAME: 
+    MYSQL_DB_PASSWORD: 
+    MYSQL_DB_DNAME: 
+```
+&nbsp; Important Note: you can not just place the values in the secrets file as a plain text, first you will need to encode them to base64 (as k8s will decode them by default). And the way to do this in linux `echo -n text | base64 `, or you can use a website like [here](https://www.base64decode.org/)</br>
+
+### 3 - Build and Run
+&nbsp; a - You will need to run `kubectl apply -f <file_name>.yaml` to apply the configurations of each file. But due to using secrets and services, you will need to execute them in specific order </br>
+&nbsp;&nbsp; I - secrets file </br>
+&nbsp;&nbsp; II - mysql deployment files </br>
+&nbsp;&nbsp; III - mysql service files </br>
+&nbsp;&nbsp; IV - config map file </br>
+&nbsp;&nbsp; V - online-store deployment file </br>
+&nbsp;&nbsp; VI - online-store-service file </br>
+&nbsp; b - The loadbalancer used in online-store-service will assign an external ip → with using minikube, it will be in pending state until you allow it to take ip by typing “minikube service <NAME_OF_SERVICE>”
+
+&nbsp;Note: If you want to edit any of the configurations, run `kubectl apply -f <file_name>.yaml`. </br>
