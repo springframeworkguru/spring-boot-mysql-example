@@ -44,7 +44,7 @@ jobs:
     - name: Test
       run: mvn test
       env:
-        MYSQL_DB_HOST: 'mysql'
+        MYSQL_DB_HOST: 'localhost'
         MYSQL_DB_PORT: '3306'
         MYSQL_DB_USERNAME: 'osama'
         MYSQL_DB_PASSWORD: ${{secrets.DatabasePassword}}
