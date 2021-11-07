@@ -35,7 +35,7 @@ jobs:
         mysql root password: ${{ secrets.RootPassword }}
         mysql user: 'osama'
         mysql password: ${{ secrets.DatabasePassword }}
-    - run: mysql --port 3306 -h 127.0.0.1 -u root -p${{ secrets.RootPassword }} -e "ALTER USER 'osama'@'localhost' IDENTIFIED WITH mysql_native_password BY ${{ secrets.DatabasePassword }} ;"
+    - run: mysql --port 3306 -h 127.0.0.1 -u osama -p${{ secrets.RootPassword }} -e "ALTER USER 'osama'@'localhost' IDENTIFIED WITH mysql_native_password BY ${{ secrets.DatabasePassword }} ;"
         
     - name: Build the JAR file
       run: mvn clean install -DskipTests
