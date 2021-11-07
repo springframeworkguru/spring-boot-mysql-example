@@ -47,7 +47,7 @@ MYSQL_DB_DNAME=
 &nbsp; a - For testing purposes, we can deploy all our kubernetes deployments on a locally created single-node cluster with minikube [here](https://minikube.sigs.k8s.io/docs/start/) </br>
 &nbsp; Note: If you are running your ubuntu on a virtual machine upon other OS, you may need to follow this [guide](https://webme.ie/how-to-run-minikube-on-a-virtualbox-vm/) instead. </br>
 
-### 2 - Put the information in a new `secret.yaml` file
+### 2 - Put the information in a new `secret.yaml` file (all files are in the k8s_yaml directory)
 &nbsp; a - Here, we will replace the `.env` file with two files. A configmap.yaml which contains non-sensetive data to be accessible by all cluster resources (this one is created for you and is present in the repository. </br>
 &nbsp; b - A secret.yaml which contains sensetive data that not to be shared on publuic repository so create the file first and fill the data below </br>
 
