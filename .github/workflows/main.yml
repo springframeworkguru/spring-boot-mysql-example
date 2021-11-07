@@ -27,7 +27,8 @@ jobs:
         distribution: 'adopt'
         cache: maven
         
-        
+    - name: Docker run hello
+      run:  docker run hello-world
     - name: Setup MySQL
       uses: haltuf/mysql-action@master
       with:
