@@ -28,16 +28,15 @@ jobs:
         cache: maven
         
     - name: Docker run hello
-      run:  docker run hello-world
-    - name: Setup MySQL
-      uses: haltuf/mysql-action@master
-      with:
-        mysql database: 'springboot_mysql_example'
-        mysql root password: ${{ secrets.RootPassword }}
-        mysql user: 'osama'
-        mysql password: ${{ secrets.DatabasePassword }}
-    - run: mysql --port 3306 -h 127.0.0.1 -u osama -p${{ secrets.RootPassword }} -e "ALTER USER 'osama'@'localhost' IDENTIFIED WITH mysql_native_password BY ${{ secrets.DatabasePassword }} ;"
-        
+      run:  docker run mysql -p 3306:3306
+      env:  
+        MYSQL_DATABASE: 'springboot_mysql_example'
+        MYSQL_USER: 'osama'
+        MYSQL_PASSWORD: ${{secrets.DatabasePassword}}
+        MYSQL_ROOT_PASSWORD: ${{secrets.DatabasePassword}}
+
+
+
     - name: Build the JAR file
       run: mvn clean install -DskipTests
     
