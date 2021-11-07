@@ -35,10 +35,8 @@ jobs:
         mysql root password: ${{ secrets.RootPassword }}
         mysql user: 'osama'
         mysql password: ${{ secrets.DatabasePassword }}
-    
-#    - name: Configure Password permission
-#      run:  ALTER USER 'osama'@'localhost' IDENTIFIED WITH mysql_native_password BY ${{ secrets.DatabasePassword }} ;
-    
+    - run: mysql --port 3306 -u root -p${{ secrets.RootPassword }} -e "ALTER USER 'osama'@'localhost' IDENTIFIED WITH mysql_native_password BY ${{ secrets.DatabasePassword }} ;"
+        
     - name: Build the JAR file
       run: mvn clean install -DskipTests
     
@@ -55,7 +53,7 @@ jobs:
 
 
   build_docker:
-    needs: build_local  #as we don't push the image unless the 
+    needs: build_local  #as we don't push the image unless the build job is done
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
