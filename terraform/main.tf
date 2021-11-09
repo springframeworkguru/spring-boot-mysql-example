@@ -45,7 +45,6 @@ resource "google_compute_disk" "default" {
   type  = "pd-ssd" //better for intensive applications with low latency
   zone  = "us-west1-a"
   size  = "100"
-  image = "debian-cloud/debian-9"
   labels = {
     environment = "dev"
   }
