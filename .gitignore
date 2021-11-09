@@ -20,3 +20,10 @@ target
 # env file
 .env
 k8s_yaml/secret.yaml
+
+#terraform files
+terraform/*
+
+## except the *.tf files
+
+!terraform/*.tf

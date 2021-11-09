@@ -8,12 +8,12 @@ on:
     branches: [ master ]
     paths-ignore:
       - "**/README.md"
-      - "main.tf"
+      - "terraform/**"
   pull_request:
     branches: [ master ]
     paths-ignore:
       - "**/README.md"
-      - "main.tf"
+      - "terraform/**"
 
 jobs:
 
