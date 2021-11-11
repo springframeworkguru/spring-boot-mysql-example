@@ -77,7 +77,7 @@ data:
 
 &nbsp;Note: If you want to edit any of the configurations, run `kubectl apply -f <file_name>.yaml`. </br>
 
-### 3 - Build and Run with ingress and domain name 
+### 4 - Build and Run with ingress and domain name 
 &nbsp; a - The configuration files used for this are online-store-ingress.yaml and online-store-internal-service.yaml (this will be applied instead of online-store-service.yaml) </br>
 &nbsp; b - Install the ingress-controller pod in your k8s cluster → with minikube you type `minikube addons enable ingress`and it will be added in the kube-system namespace </br>
 &nbsp; c - apply online-store-internal-service.yaml ( note that if you used the above steps exactly, you will have 2 services mapping to the same deployment and it is fine for testing. Otherwise, delete the service online-store-service ) </br>
