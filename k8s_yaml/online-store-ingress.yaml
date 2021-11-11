@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: online-store-ingress
+spec:
+  rules:
+  - host: osama.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: online-store-internal-service
+            port:
+              number: 8080
