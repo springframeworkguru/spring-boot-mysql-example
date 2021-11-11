@@ -65,7 +65,7 @@ data:
 ```
 &nbsp; Important Note: you can not just place the values in the secrets file as a plain text, first you will need to encode them to base64 (as k8s will decode them by default). And the way to do this in linux `echo -n text | base64 `, or you can use a website like [here](https://www.base64decode.org/)</br>
 
-### 3 - Build and Run
+### 3 - Build and Run with external ip 
 &nbsp; a - You will need to run `kubectl apply -f <file_name>.yaml` to apply the configurations of each file. But due to using secrets and services, you will need to execute them in specific order </br>
 &nbsp;&nbsp; I - secrets file </br>
 &nbsp;&nbsp; II - mysql deployment files </br>
@@ -76,3 +76,13 @@ data:
 &nbsp; b - The loadbalancer used in online-store-service will assign an external ip → with using minikube, it will be in pending state until you allow it to take ip by typing “minikube service <NAME_OF_SERVICE>”
 
 &nbsp;Note: If you want to edit any of the configurations, run `kubectl apply -f <file_name>.yaml`. </br>
+
+### 3 - Build and Run with ingress and domain name 
+&nbsp; a - The configuration files used for this are online-store-ingress.yaml and online-store-internal-service.yaml (this will be applied instead of online-store-service.yaml) </br>
+&nbsp; b - Install the ingress-controller pod in your k8s cluster → with minikube you type `minikube addons enable ingress`and it will be added in the kube-system namespace </br>
+&nbsp; c - apply online-store-internal-service.yaml ( note that if you used the above steps exactly, you will have 2 services mapping to the same deployment and it is fine for testing. Otherwise, delete the service online-store-service ) </br>
+&nbsp; d - apply the online-store-ingress.yaml ( note that you will replace the file in step 6 above with ) </br>
+&nbsp; e - this will create an IP address to the hostname osama.com → type `kubectl get ingress` to know </br>
+&nbsp; f - For testing and with using minikube, this is a dummy hostname that is not available publicly. So we have to map it explicitly to the address created by minkube </br>
+&nbsp; g - to map in your linux, type `sudo nano /etc/hosts` → add the IP address created in step 5 and the hostname associated with it osama.com </br>
+&nbsp; h - Go to osama.com in your browser to open the application </br>
