@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  name: online-store-internal-service   #this is the one used bby ingress controller
+spec: 
+  selector:
+    app: online-store
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
